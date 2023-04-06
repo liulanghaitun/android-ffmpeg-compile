@@ -18,7 +18,7 @@ export STRIP=$TARGET_TOOCHAIN/bin/strip
 export RANLIB=$TARGET_TOOCHAIN/bin/ranlib
 export GCCLIB=$TOOLCHAIN/lib/gcc/$TARGET/4.9.x/armv7-a
 
-function load(){
+function configure(){
    TARGET_ABI=arm-linux-androideabi ./configure --disable-everything --disable-doc --disable-programs --enable-shared --disable-static --disable-pthreads --enable-cross-compile --arch=$ARCH --cpu=$CPU --target-os=android --enable-pic \
       --prefix=android/armeabi-v7a \
       --enable-encoder=h261 --enable-decoder=h261 --enable-encoder=h263 --enable-decoder=h263 \
@@ -27,7 +27,7 @@ function load(){
       --extra-ldflags="-rpath-link=$GCCLIB -L$GCCLIB -L$SYSROOT/usr/lib -rpath-link=$PLATFORM/usr/lib -L$PLATFORM/usr/lib -L. -nostdlib -lc -lm -ldl" \
       --cc=$CC --ld=$LD --strip=$STRIP
 }
-load
-make clean
+configure
+patch -p1 < config.patch
 make -j12
 make install
