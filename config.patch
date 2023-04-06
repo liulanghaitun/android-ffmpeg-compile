@@ -1,0 +1,212 @@
+4c4
+< #define FFMPEG_CONFIGURATION "--disable-everything --disable-doc --disable-programs --enable-shared --disable-static --disable-pthreads --enable-cross-compile --arch=arm --cpu=armv7-a --target-os=android --enable-pic --prefix=android/armeabi-v7a --enable-encoder=h261 --enable-decoder=h261 --enable-encoder=h263 --enable-decoder=h263 --extra-libs=-lgcc --extra-cflags='-I/opt/android-ndk/sysroot/usr/include -D__ANDROID_API__=23' --extra-ldflags='-rpath-link=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x/armv7-a -L/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x/armv7-a -L/opt/android-ndk/sysroot/usr/lib -rpath-link=/opt/android-ndk/platforms/android-23/arch-arm/usr/lib -L/opt/android-ndk/platforms/android-23/arch-arm/usr/lib -L. -nostdlib -lc -lm -ldl' --cc=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc --ld=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/ld --strip=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/strip"
+---
+> #define FFMPEG_CONFIGURATION "--disable-everything --disable-doc --disable-programs --disable-stripping --disable-shared --disable-pthreads --enable-cross-compile --arch=armv7a --target-os=linux --enable-pic --prefix=output/armeabi-v7a --sysroot=/opt/android-ndk/sysroot --enable-encoder=h261 --enable-decoder=h261 --enable-encoder=h263 --enable-decoder=h263 --extra-ldflags='-L/opt/android-ndk/platforms/android-21/arch-arm/usr/lib -lc ' --cc=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc --ld=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/ld --strip=/opt/android-ndk/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/arm-linux-androideabi/bin/strip"
+7,8c7,8
+< #define FFMPEG_DATADIR "android/armeabi-v7a/share/ffmpeg"
+< #define AVCONV_DATADIR "android/armeabi-v7a/share/ffmpeg"
+---
+> #define FFMPEG_DATADIR "output/armeabi-v7a/share/ffmpeg"
+> #define AVCONV_DATADIR "output/armeabi-v7a/share/ffmpeg"
+10c10
+< #define OS_NAME android
+---
+> #define OS_NAME linux
+18d17
+< #define getenv(x) NULL
+98c97
+< #define HAVE_ARMV6T2_EXTERNAL 1
+---
+> #define HAVE_ARMV6T2_EXTERNAL 0
+100,102c99,101
+< #define HAVE_NEON_EXTERNAL 1
+< #define HAVE_VFP_EXTERNAL 1
+< #define HAVE_VFPV3_EXTERNAL 1
+---
+> #define HAVE_NEON_EXTERNAL 0
+> #define HAVE_VFP_EXTERNAL 0
+> #define HAVE_VFPV3_EXTERNAL 0
+146,147c145,146
+< #define HAVE_ARMV6_INLINE 1
+< #define HAVE_ARMV6T2_INLINE 1
+---
+> #define HAVE_ARMV6_INLINE 0
+> #define HAVE_ARMV6T2_INLINE 0
+149,151c148,150
+< #define HAVE_NEON_INLINE 1
+< #define HAVE_VFP_INLINE 1
+< #define HAVE_VFPV3_INLINE 1
+---
+> #define HAVE_NEON_INLINE 0
+> #define HAVE_VFP_INLINE 0
+> #define HAVE_VFPV3_INLINE 0
+196c195
+< #define HAVE_FAST_CLZ 1
+---
+> #define HAVE_FAST_CLZ 0
+198c197
+< #define HAVE_FAST_FLOAT16 0
+---
+> #define HAVE_FAST_FLOAT16 1
+214c213
+< #define HAVE_FAST_UNALIGNED 1
+---
+> #define HAVE_FAST_UNALIGNED 0
+254,261c253,260
+< #define HAVE_INTRINSICS_NEON 1
+< #define HAVE_ATANF 0
+< #define HAVE_ATAN2F 0
+< #define HAVE_CBRT 0
+< #define HAVE_CBRTF 0
+< #define HAVE_COPYSIGN 0
+< #define HAVE_COSF 0
+< #define HAVE_ERF 0
+---
+> #define HAVE_INTRINSICS_NEON 0
+> #define HAVE_ATANF 1
+> #define HAVE_ATAN2F 1
+> #define HAVE_CBRT 1
+> #define HAVE_CBRTF 1
+> #define HAVE_COPYSIGN 1
+> #define HAVE_COSF 1
+> #define HAVE_ERF 1
+263,265c262,264
+< #define HAVE_EXP2F 0
+< #define HAVE_EXPF 0
+< #define HAVE_HYPOT 0
+---
+> #define HAVE_EXP2F 1
+> #define HAVE_EXPF 1
+> #define HAVE_HYPOT 1
+273,283c272,282
+< #define HAVE_LOG2F 0
+< #define HAVE_LOG10F 0
+< #define HAVE_LRINT 0
+< #define HAVE_LRINTF 0
+< #define HAVE_POWF 0
+< #define HAVE_RINT 0
+< #define HAVE_ROUND 0
+< #define HAVE_ROUNDF 0
+< #define HAVE_SINF 0
+< #define HAVE_TRUNC 0
+< #define HAVE_TRUNCF 0
+---
+> #define HAVE_LOG2F 1
+> #define HAVE_LOG10F 1
+> #define HAVE_LRINT 1
+> #define HAVE_LRINTF 1
+> #define HAVE_POWF 1
+> #define HAVE_RINT 1
+> #define HAVE_ROUND 1
+> #define HAVE_ROUNDF 1
+> #define HAVE_SINF 1
+> #define HAVE_TRUNC 1
+> #define HAVE_TRUNCF 1
+291c290
+< #define HAVE_ACCESS 0
+---
+> #define HAVE_ACCESS 1
+294c293
+< #define HAVE_CLOCK_GETTIME 0
+---
+> #define HAVE_CLOCK_GETTIME 1
+297,300c296,299
+< #define HAVE_FCNTL 0
+< #define HAVE_GETADDRINFO 0
+< #define HAVE_GETAUXVAL 0
+< #define HAVE_GETENV 0
+---
+> #define HAVE_FCNTL 1
+> #define HAVE_GETADDRINFO 1
+> #define HAVE_GETAUXVAL 1
+> #define HAVE_GETENV 1
+302c301
+< #define HAVE_GETOPT 0
+---
+> #define HAVE_GETOPT 1
+307c306
+< #define HAVE_GETRUSAGE 0
+---
+> #define HAVE_GETRUSAGE 1
+310c309
+< #define HAVE_GETTIMEOFDAY 0
+---
+> #define HAVE_GETTIMEOFDAY 1
+313,315c312,314
+< #define HAVE_GMTIME_R 0
+< #define HAVE_INET_ATON 0
+< #define HAVE_ISATTY 0
+---
+> #define HAVE_GMTIME_R 1
+> #define HAVE_INET_ATON 1
+> #define HAVE_ISATTY 1
+317,318c316,317
+< #define HAVE_LOCALTIME_R 0
+< #define HAVE_LSTAT 0
+---
+> #define HAVE_LOCALTIME_R 1
+> #define HAVE_LSTAT 1
+322,326c321,325
+< #define HAVE_MEMALIGN 0
+< #define HAVE_MKSTEMP 0
+< #define HAVE_MMAP 0
+< #define HAVE_MPROTECT 0
+< #define HAVE_NANOSLEEP 0
+---
+> #define HAVE_MEMALIGN 1
+> #define HAVE_MKSTEMP 1
+> #define HAVE_MMAP 1
+> #define HAVE_MPROTECT 1
+> #define HAVE_NANOSLEEP 1
+328,329c327,328
+< #define HAVE_POSIX_MEMALIGN 0
+< #define HAVE_PRCTL 0
+---
+> #define HAVE_POSIX_MEMALIGN 1
+> #define HAVE_PRCTL 1
+331c330
+< #define HAVE_SCHED_GETAFFINITY 0
+---
+> #define HAVE_SCHED_GETAFFINITY 1
+337c336
+< #define HAVE_SETRLIMIT 0
+---
+> #define HAVE_SETRLIMIT 1
+339,340c338,339
+< #define HAVE_STRERROR_R 0
+< #define HAVE_SYSCONF 0
+---
+> #define HAVE_STRERROR_R 1
+> #define HAVE_SYSCONF 1
+342c341
+< #define HAVE_USLEEP 0
+---
+> #define HAVE_USLEEP 1
+422c421
+< #define HAVE_ZLIB_GZIP 0
+---
+> #define HAVE_ZLIB_GZIP 1
+569c568
+< #define CONFIG_ZLIB 0
+---
+> #define CONFIG_ZLIB 1
+600c599
+< #define CONFIG_SHARED 1
+---
+> #define CONFIG_SHARED 0
+602c601
+< #define CONFIG_STATIC 0
+---
+> #define CONFIG_STATIC 1
+622c621
+< #define CONFIG_FAST_UNALIGNED 1
+---
+> #define CONFIG_FAST_UNALIGNED 0
+632c631
+< #define CONFIG_LINUX_PERF 0
+---
+> #define CONFIG_LINUX_PERF 1
+638c637
+< #define CONFIG_PTX_COMPRESSION 0
+---
+> #define CONFIG_PTX_COMPRESSION 1
